@@ -105,8 +105,7 @@ for x in politicians:
 politicians_df = pd.concat(politicians_df_list)
 
 
-fig = px.bar(politicians_df, x="Emotions", y="Score", color="Author",barmode='group',
-             color_discrete_map=colors)
+fig = px.bar(politicians_df, x="Emotions", y="Score", color="Author",barmode='group',color_discrete_map=colors)
 fig.update_layout(autosize=True, showlegend=True, legend_orientation="h")
 fig.update_yaxes(visible=True, showticklabels=True)
 fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
