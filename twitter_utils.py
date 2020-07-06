@@ -112,7 +112,7 @@ def resample_df(data, freq='W'):
     return df2
 
 
-authors = ['sanchezcastejon', 'pablocasado_', 'PabloIglesias', 'Santi_ABASCAL', 'InesArrimadas']
+authors = ['WilliamsRuto', 'RailaOdinga', 'MusaliaMudavadi', 'Wetangulam', 'HonMoses_Kuria']
 #authors = ['gabrielrufian']
 
 colors = {"WilliamsRuto": "rgb(249, 70, 0)",
