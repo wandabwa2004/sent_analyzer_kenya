@@ -17,7 +17,7 @@ def text_emotion(df, column):
 
     new_df = df.copy()
 
-    emolex_df = pd.read_csv("NRC-Emotion-Lexicon-Wordlevel-v0.92.txt",
+    emolex_df = pd.read_csv("NRC_emotion_lexicon_list.txt",
                             names=["word", "emotion", "association"],
                             sep='\t')
     emolex_words = emolex_df.pivot(index='word',
@@ -81,7 +81,7 @@ for emotion in emotions:
 
 df_unique = df_emotions.drop_duplicates(['Date'])
 df_unique = df_unique.drop_duplicates(['Tweet_English'])
-df_unique = df_unique[df_unique.Author != 'gabrielrufian'] #todo delete it in the future
+#df_unique = df_unique[df_unique.Author != 'gabrielrufian'] #todo delete it in the future
 df_unique = df_unique.dropna(axis='index')
 
 df_unique.to_csv('tweets_emotions_score.csv', index=False)

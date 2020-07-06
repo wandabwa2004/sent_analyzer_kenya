@@ -9,25 +9,24 @@ from bokeh.models.widgets import Div
 image = Image.open('sentiment_table_example.png')
 
 
-st.title('Análisis de Sentimiento para los Principales Políticos en Twitter')
-st.write('En esta página se realiza un estudio de análisis de sentimiento a los tweets de los principales políticos en España. Para cada político se han recogido sus últimos 3200 tweets, incluyendo retweets, con fecha de 15 de Junio de 2020.')
-st.write('Antes de ponernos a mirar números, vamos a hacer una pequeña introducción al análisis de sentimientos. ',
-         'Se conoce por análisis de sentimientos al proceso de determinar el tono emocional que hay detrás de una serie de palabras, y se utiliza para intentar entender las actitudes, opiniones y emociones expresadas. ')
+st.title('Analysis of Twitter Sentiments for Kenyan Politicians')
+#st.write('En esta página se realiza un estudio de análisis de sentimiento a los tweets de los principales políticos en España. Para cada político se han recogido sus últimos 3200 tweets, incluyendo retweets, con fecha de 15 de Junio de 2020.')
+#st.write('Antes de ponernos a mirar números, vamos a hacer una pequeña introducción al análisis de sentimientos. ',
+#         'Se conoce por análisis de sentimientos al proceso de determinar el tono emocional que hay detrás de una serie de palabras, y se utiliza para intentar entender las actitudes, opiniones y emociones expresadas. ')
 
-st.write('Seguro que se entiende mejor viendo ejemplos con los tweets mas positivos y más negativos de este estudio. ')
-st.image(image, caption='Tweets más negativos y más positivos', use_column_width=True)
+#st.write('Seguro que se entiende mejor viendo ejemplos con los tweets mas positivos y más negativos de este estudio. ')
+st.image(image, caption='Negative vs  Positive  Tweets', use_column_width=True)
 st.write("")
-st.write("En la siguiente gráfica se muestran los resultados de clasificar cada tweet en una escala de muy positivo (1) a muy negativo (-1).")
+#st.write("En la siguiente gráfica se muestran los resultados de clasificar cada tweet en una escala de muy positivo (1) a muy negativo (-1).")
 
 authors = twitter_utils.authors
 colors = twitter_utils.colors
 
 
-freq_dict = {'Hora': 'H', 'Día': 'D', 'Semana': 'W-Mon', 'Mes': 'M', 'Año': 'Y'}
+freq_dict = {'Hour': 'H', 'Day': 'D', 'Week': 'W-Mon', 'Month': 'M', 'Year': 'Y'}
 
-option = st.sidebar.selectbox('Para mejorar la visualización temporal, es necesario agrupar los tweets por fechas.'
-                      ' ¿Como te gustaría hacerlo?',
-                      ('Mes', 'Semana'))
+option = st.sidebar.selectbox('Choose the time durations for  the analysis',
+                      ('Month', 'Week','Hour','Day'))
 st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
@@ -39,13 +38,13 @@ st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
-st.sidebar.markdown("Consejo: Si pinchas una vez sobre el nombre de un político en la leyenda, este sale del gráfico. "
-                    "Si pinchas dos veces, se queda solo en el gráfico")
-st.sidebar.markdown("Además, en los gráficos temporales puedes seleccionar el periodo que te interese. Si pinchas dos veces sobre el mismo vuelves a la ventana de tiempo original")
+st.sidebar.markdown("Tip: If you click once on the name of a politician in the legend, it leaves the graph. "
+                    "If you click twice, you are left alone on the graph")
+st.sidebar.markdown("In addition, in the temporary charts you can select the period that interests you. If you double click on it you return to the original time window")
 
 #st.write('Has seleccionado:', option)
 
-live_tweeter = False
+live_tweeter = True
 
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
@@ -53,7 +52,7 @@ if live_tweeter:
 else:
     df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
     df_emotions = pd.read_csv("tweets_emotions_score.csv")
-    df_emotions = df_emotions[df_emotions.Author != 'gabrielrufian']
+    #df_emotions = df_emotions[df_emotions.Author != 'gabrielrufian']
 
 
 
@@ -61,18 +60,18 @@ freq_choosen = freq_dict[option]
 df_sentiment_freq = twitter_utils.resample_df(df_sentiment, freq_choosen)
 df_emotions_freq = twitter_utils.resample_df(df_emotions, freq_choosen)
 
-fig = px.line(df_sentiment_freq, x='Date', y='Sentiment Score', color='Author', title="Evolución Temporal de Sentimientos por Político",
+fig = px.line(df_sentiment_freq, x='Date', y='Sentiment Score', color='Author', title="Temporal Evolution of Sentiment ",
               color_discrete_map=colors)
 st.write(fig)
 
-fig = px.box(df_sentiment, y="Sentiment Score", color="Author", title="Rango de Sentimiento por Político",
+fig = px.box(df_sentiment, y="Sentiment Score", color="Author", title="Sentiment Rank",
              color_discrete_map=colors)
 #st.write(fig)
 
 
-st.write("Tambien se pueden analizar la intensidad con la que se utilizan las emociones.")
+st.write("Emotion in the Politician Tweets")
 
-emotion = st.selectbox(' ¿Que emoción te gustaría analizar?',
+emotion = st.selectbox(' Choose the  emotion to analse',
                       ('anger', 'anticipation', 'disgust', 'fear', 'joy', 'negative', 'positive', 'sadness', 'surprise', 'trust'))
 
 emotions = ['anger', 'anticipation', 'disgust', 'fear', 'joy', 'negative', 'positive', 'sadness', 'surprise', 'trust']
@@ -94,9 +93,9 @@ fig = px.bar(df_unpivot, x="Emotions", y="Score", color="Author", color_discrete
 #st.write(fig)
 
 
-st.write("A continuación comparamos las emociones más comunes para cada político.")
-politicians = st.multiselect(label='Elige que politicos comparar',
-                      options=authors, default=['sanchezcastejon', 'pablocasado_'])
+st.write("A comparison of Emotions against different politicians.")
+politicians = st.multiselect(label='Choose any two or  more for a side by side comparison',
+                      options=authors, default=['WilliamsRuto', 'RailaOdinga'])
 
 politicians_df_list = []
 
@@ -114,8 +113,7 @@ fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 st.write(fig)
 
 st.write("")
-st.write("¿Que conclusiones sacas? " 
-         "¿Se te ocurre algun otro análisis interesante? ")
+st.write("Did the emotions of your favourite  politician impress you?")
 
 
 
@@ -125,17 +123,17 @@ st.write("¿Que conclusiones sacas? "
 
 
 
-if st.button('Hablemos! :)'):
-    js = "window.open('https://www.linkedin.com/in/carloscamorales')"  # New tab or window
-    html = '<img src onerror="{}">'.format(js)
-    div = Div(text=html)
-    st.bokeh_chart(div)
+# if st.button('Hablemos! :)'):
+#     js = "window.open('https://www.linkedin.com/in/carloscamorales')"  # New tab or window
+#     html = '<img src onerror="{}">'.format(js)
+#     div = Div(text=html)
+#     st.bokeh_chart(div)
 
 
-if st.button('Y si te apetece echarle un vistazo al código. Bienvenido!'):
-    js = "window.open('https://github.com/camorales197/tweets_sentiments')"  # New tab or window
-    html = '<img src onerror="{}">'.format(js)
-    div = Div(text=html)
-    st.bokeh_chart(div)
+# if st.button('Y si te apetece echarle un vistazo al código. Bienvenido!'):
+#     js = "window.open('https://github.com/camorales197/tweets_sentiments')"  # New tab or window
+#     html = '<img src onerror="{}">'.format(js)
+#     div = Div(text=html)
+#     st.bokeh_chart(div)
 
 
