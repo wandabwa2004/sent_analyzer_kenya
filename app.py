@@ -21,8 +21,6 @@ st.write("")
 
 authors = twitter_utils.authors
 colors = twitter_utils.colors
-n_tweets = twitter_utils.n_tweets
-pages = twitter_util.pages
 
 
 freq_dict = {'Hour': 'H', 'Day': 'D', 'Week': 'W-Mon', 'Month': 'M', 'Year': 'Y'}
