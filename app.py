@@ -47,7 +47,7 @@ st.sidebar.markdown("In addition, in the temporary charts you can select the per
 live_tweeter = True
 
 if live_tweeter:
-    df = twitter_utils.getting_tweets(authors, n_tweets, pages)
+    df = twitter_utils.getting_tweets(authors, authors, pages)
     df.to_csv('last_tweets.csv', mode='a', header=False)
 else:
     df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
