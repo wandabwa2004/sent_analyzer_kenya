@@ -44,7 +44,7 @@ st.sidebar.markdown("In addition, in the temporary charts you can select the per
 
 #st.write('Has seleccionado:', option)
 
-live_tweeter = True
+live_tweeter = False
 
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
