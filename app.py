@@ -51,13 +51,15 @@ live_tweeter = True
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
     df.to_csv('last_tweets.csv', mode='a', header=False)
-    #df = twitter_utils.clean_tweets
-    df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
-    df_emotions = pd.read_csv("tweets_emotions_score.csv")
+    df_clean = twitter_utils.clean_tweets(df["Tweet"])
+    df_emotions = emotions.text_emotion(df_clean,df_clean["Tweet"])
+    df_sentiment = translate_and_sentiment_score.sentiment_analyzer_scores(df_clean)
+    #df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
+    #df_emotions = pd.read_csv("tweets_emotions_score.csv")
     
 else:
-    df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
-    df_emotions = pd.read_csv("tweets_emotions_score.csv")
+    df_sentiment = pd.read_csv("tweets_sentiment_score1.csv")
+    df_emotions = pd.read_csv("tweets_emotions_score1.csv")
     #df_emotions = df_emotions[df_emotions.Author != 'gabrielrufian']
 
 
