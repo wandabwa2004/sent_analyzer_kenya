@@ -13,4 +13,5 @@ watchdog==0.10.2
 python-dotenv==0.13.0
 bokeh
 nltk
+nltk.download('stopwords')
 
