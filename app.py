@@ -121,13 +121,18 @@ st.write(df_sentiment["Author"].value_counts())
 
 
 
-# if st.button('Hablemos! :)'):
-#     js = "window.open('https://www.linkedin.com/in/carloscamorales')"  # New tab or window
-#     html = '<img src onerror="{}">'.format(js)
-#     div = Div(text=html)
-#     st.bokeh_chart(div)
+if st.button('Interested in my career profile?)':
+    js = "window.open('https://www.linkedin.com/in/wandabwaherman/')"  # New tab or window
+    html = '<img src onerror="{}">'.format(js)
+    div = Div(text=html)
+    st.bokeh_chart(div)
 
-
+if st.button('I sometimes blog..'):
+    js = "window.open('https://medium.com/@hermanwandabwa')"  # New tab or window
+    html = '<img src onerror="{}">'.format(js)
+    div = Div(text=html)
+    st.bokeh_chart(div)
+    
 # if st.button('Y si te apetece echarle un vistazo al código. Bienvenido!'):
 #     js = "window.open('https://github.com/camorales197/tweets_sentiments')"  # New tab or window
 #     html = '<img src onerror="{}">'.format(js)
