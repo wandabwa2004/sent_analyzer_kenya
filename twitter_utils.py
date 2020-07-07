@@ -98,8 +98,8 @@ def clean_tweets(lst):
 
 def sentiment_analyzer_scores(text):
     #text = translator.translate(text=text).text
-    #sentiment = analyser.polarity_scores(text)["compound"]
-    sentiment = 0
+    sentiment = analyser.polarity_scores(text)["compound"]
+    #sentiment = 0
     text = text
     return text, sentiment
 
