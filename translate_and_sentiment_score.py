@@ -24,7 +24,7 @@ def sentiment_analyzer_scores(text):
 translator = Translator()
 analyser = SentimentIntensityAnalyzer()
 
-df = pd.read_csv("tweets.csv", usecols=["Author", "Date", "Tweet"],
+df = pd.read_csv("last_tweets.csv", usecols=["Author", "Date", "Tweet"],
                  dtype={'Author': object, 'Date': object, 'Tweet': object})
 
 df["Tweet_English"] = df.apply(lambda x: translate(x['Tweet']), axis=1)
