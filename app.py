@@ -50,21 +50,21 @@ st.sidebar.markdown("In addition, in the temporary charts you can select the per
 
 #st.write('Has seleccionado:', option)
 
-live_tweeter = True
+live_tweeter = False
 
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
     df.to_csv('last_tweets.csv', mode='a', header=False)
-    df_clean = twitter_utils.clean_tweets(df["Tweet"])
-    df_emotions = emotions.text_emotion(df_clean,df_clean["Tweet"])
-    df_sentiment = translate_and_sentiment_score.sentiment_analyzer_scores(df_clean)
+#     df_clean = twitter_utils.clean_tweets(df["Tweet"])
+#     df_emotions = emotions.text_emotion(df_clean,df_clean["Tweet"])
+#     df_sentiment = translate_and_sentiment_score.sentiment_analyzer_scores(df_clean)
     #df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
     #df_emotions = pd.read_csv("tweets_emotions_score.csv")
     
 else:
-    df_sentiment = pd.read_csv("tweets_sentiment_score1.csv")
-    df_emotions = pd.read_csv("tweets_emotions_score1.csv")
-    #df_emotions = df_emotions[df_emotions.Author != 'gabrielrufian']
+    df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
+    df_emotions = pd.read_csv("tweets_emotions_score.csv")
+    
 
 
 
