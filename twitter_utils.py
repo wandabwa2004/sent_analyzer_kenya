@@ -113,7 +113,6 @@ def resample_df(data, freq='W'):
 
 
 authors = ['WilliamsRuto', 'RailaOdinga', 'MusaliaMudavadi', 'Wetangulam', 'HonMoses_Kuria']
-#authors = ['gabrielrufian']
 pages  = 1 
 n_tweets = 10
 colors = {"WilliamsRuto": "rgb(249, 70, 0)",
