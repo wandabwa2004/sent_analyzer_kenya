@@ -8,7 +8,7 @@ import nltk
 nltk.download('stopwords')
 
 
-image = Image.open('sentiment_table_example.png')
+image = Image.open('political_sentiments.png')
 
 
 st.title('Analysis of Twitter Sentiments for Kenyan Politicians')
@@ -41,8 +41,7 @@ st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
-st.sidebar.markdown("Tip: If you click once on the name of a politician in the legend, it leaves the graph. "
-                    "If you click twice, you are left alone on the graph")
+st.sidebar.markdown("Tip: Click on your  favourite  politician just once.")
 st.sidebar.markdown("In addition, in the temporary charts you can select the period that interests you. If you double click on it you return to the original time window")
 
 #st.write('Has seleccionado:', option)
