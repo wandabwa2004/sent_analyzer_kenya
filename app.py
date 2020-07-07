@@ -1,6 +1,8 @@
 import plotly.express as px
 import streamlit as st
 import twitter_utils
+import emotions
+import translate_and_sentiment_score
 import pandas as pd
 from PIL import Image
 from bokeh.models.widgets import Div
