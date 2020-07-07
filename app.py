@@ -54,7 +54,7 @@ live_tweeter = False
 
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
-    df.to_csv('last_tweets.csv', mode='a', header=False)
+    #df.to_csv('last_tweets.csv', mode='a', header=False)
 #     df_clean = twitter_utils.clean_tweets(df["Tweet"])
 #     df_emotions = emotions.text_emotion(df_clean,df_clean["Tweet"])
 #     df_sentiment = translate_and_sentiment_score.sentiment_analyzer_scores(df_clean)
