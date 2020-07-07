@@ -1,8 +1,6 @@
 import plotly.express as px
 import streamlit as st
 import twitter_utils
-import emotions
-import translate_and_sentiment_score
 import pandas as pd
 from PIL import Image
 from bokeh.models.widgets import Div
@@ -25,8 +23,7 @@ st.write("")
 
 authors = twitter_utils.authors
 colors = twitter_utils.colors
-pages = twitter_utils.pages 
-n_tweets = twitter_utils.n_tweets
+
 
 
 freq_dict = {'Hour': 'H', 'Day': 'D', 'Week': 'W-Mon', 'Month': 'M', 'Year': 'Y'}
@@ -54,13 +51,7 @@ live_tweeter = False
 
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
-    #df.to_csv('last_tweets.csv', mode='a', header=False)
-#     df_clean = twitter_utils.clean_tweets(df["Tweet"])
-#     df_emotions = emotions.text_emotion(df_clean,df_clean["Tweet"])
-#     df_sentiment = translate_and_sentiment_score.sentiment_analyzer_scores(df_clean)
-    #df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
-    #df_emotions = pd.read_csv("tweets_emotions_score.csv")
-    
+    df.to_csv('last_tweets.csv', mode='a', header=False)
 else:
     df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
     df_emotions = pd.read_csv("tweets_emotions_score.csv")
