@@ -118,7 +118,7 @@ st.write(df_sentiment["Author"].value_counts())
 
 
 
-if st.button('Interested in my career profile?)':
+if st.button('Interested in my career profile?'):
     js = "window.open('https://www.linkedin.com/in/wandabwaherman/')"  # New tab or window
     html = '<img src onerror="{}">'.format(js)
     div = Div(text=html)
