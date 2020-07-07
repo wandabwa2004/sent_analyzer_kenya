@@ -6,6 +6,8 @@ import translate_and_sentiment_score
 import pandas as pd
 from PIL import Image
 from bokeh.models.widgets import Div
+import nltk 
+nltk.download('stopwords')
 
 
 image = Image.open('sentiment_table_example.png')
