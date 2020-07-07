@@ -39,11 +39,8 @@ st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
 st.sidebar.markdown("")
-st.sidebar.markdown("")
 st.sidebar.markdown("Tip: Click on your  favourite  politician just once.")
 st.sidebar.markdown("In addition, in the temporary charts you can select the period that interests you. If you double click on it you return to the original time window")
-
-#st.write('Has seleccionado:', option)
 
 live_tweeter = False
 
