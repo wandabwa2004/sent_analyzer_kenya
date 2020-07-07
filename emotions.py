@@ -86,6 +86,6 @@ df_unique = df_unique.dropna(axis='index')
 
 df_unique.to_csv('tweets_emotions_score.csv', index=False)
 print(df_unique)
-print("Cé finit!")
+print("All good!")
 
 
