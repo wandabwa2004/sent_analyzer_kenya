@@ -1,5 +1,5 @@
 import tweepy
-import os
+#import os
 from dotenv import load_dotenv
 import numpy as np
 import re
@@ -11,10 +11,10 @@ import pandas as pd
 def auth_tweeter():
     load_dotenv()
 
-    consumer_key = os.environ.get("ZWQLbEgJM64JIxZsPoTCBnLPI")
-    consumer_secret = os.environ.get("aZSoGEleqt5SXG4zQqPI59AsawkERPJ3cFvasRktrMnaIB5XIl")
-    access_token = os.environ.get("2949261146-d1ywMiLC7lQq0bkdMzsT0hG3HLuK4ReV9a1SSo0")
-    access_token_secret = os.environ.get("zDU6EQevkDEZrAwUR1L5RyxCbuAM8BzFVGpx9MVpNqh3J")
+    consumer_key = "ZWQLbEgJM64JIxZsPoTCBnLPI"
+    consumer_secret = "aZSoGEleqt5SXG4zQqPI59AsawkERPJ3cFvasRktrMnaIB5XIl"
+    access_token = "2949261146-d1ywMiLC7lQq0bkdMzsT0hG3HLuK4ReV9a1SSo0"
+    access_token_secret = "zDU6EQevkDEZrAwUR1L5RyxCbuAM8BzFVGpx9MVpNqh3J"
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
