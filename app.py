@@ -11,20 +11,19 @@ nltk.download('stopwords')
 image = Image.open('political_sentiments.png')
 
 
-st.title('Analysis of Twitter Sentiments for Kenyan Politicians')
-#st.write('En esta página se realiza un estudio de análisis de sentimiento a los tweets de los principales políticos en España. Para cada político se han recogido sus últimos 3200 tweets, incluyendo retweets, con fecha de 15 de Junio de 2020.')
-#st.write('Antes de ponernos a mirar números, vamos a hacer una pequeña introducción al análisis de sentimientos. ',
-#         'Se conoce por análisis de sentimientos al proceso de determinar el tono emocional que hay detrás de una serie de palabras, y se utiliza para intentar entender las actitudes, opiniones y emociones expresadas. ')
+st.title('Kenyan Political Sentiments - The Polimeter ')
+st.write('We carried out the analysis of sentiments of tweets disseminated by five political leaders  in Kenya. Emotions  in their tweets  were  mapped on the sentiments.')
+st.subheader('What is sentiment analysis? ')
+st.write ('Sentiment analysis is the mining of context in text and in the process identifying  subjective information related to the entity of interest.  Entities can be brands, products or services.')
 
-#st.write('Seguro que se entiende mejor viendo ejemplos con los tweets mas positivos y más negativos de este estudio. ')
-st.image(image, caption='Negative vs  Positive  Tweets', use_column_width=True)
+st.write('Any positivity or negativity in the politicians  sentiments. We got the  last 3200 tweets from their timelines.')
+st.image(image, caption='Positive  vs  Negative Tweets', use_column_width=True)
 st.write("")
-#st.write("En la siguiente gráfica se muestran los resultados de clasificar cada tweet en una escala de muy positivo (1) a muy negativo (-1).")
+st.write("")
+st.write(" The most positive sentiment is  1 and most negative is -1. Neutral tweets have a sentiment score of 0.")
 
 authors = twitter_utils.authors
 colors = twitter_utils.colors
-
-
 
 freq_dict = {'Hour': 'H', 'Day': 'D', 'Week': 'W-Mon', 'Month': 'M', 'Year': 'Y'}
 
@@ -96,7 +95,7 @@ fig = px.bar(df_unpivot, x="Emotions", y="Score", color="Author", color_discrete
 
 
 st.write("A comparison of Emotions against different politicians.")
-politicians = st.multiselect(label='Choose any two or  more for a side by side comparison',
+politicians = st.multiselect(label='Choose any two or  more politicians for  a side by side comparison',
                       options=authors, default=['WilliamsRuto', 'RailaOdinga'])
 
 politicians_df_list = []
@@ -114,12 +113,10 @@ fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 st.write(fig)
 
 st.write("")
-st.write("Did the emotions of your favourite  politician impress you?")
+st.write("Are you impressed by the sentiment and emotions of your favourite politician? Ultimately, they define them. Vote wisely.")
 
-
-
-#st.write("Número de tweets analizados por político.")
-#st.write(df_sentiment["Author"].value_counts())
+st.write("Number of  tweets in the analysis for the  politician.")
+st.write(df_sentiment["Author"].value_counts())
 
 
 
