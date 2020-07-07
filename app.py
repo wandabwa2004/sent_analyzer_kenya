@@ -51,6 +51,10 @@ live_tweeter = True
 if live_tweeter:
     df = twitter_utils.getting_tweets(authors, n_tweets, pages)
     df.to_csv('last_tweets.csv', mode='a', header=False)
+    #df = twitter_utils.clean_tweets
+    df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
+    df_emotions = pd.read_csv("tweets_emotions_score.csv")
+    
 else:
     df_sentiment = pd.read_csv("tweets_sentiment_score.csv")
     df_emotions = pd.read_csv("tweets_emotions_score.csv")
