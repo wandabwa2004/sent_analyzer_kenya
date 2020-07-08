@@ -117,9 +117,9 @@ pages  = 1
 n_tweets = 10
 colors = {"WilliamsRuto": "rgb(249, 70, 0)",
           "RailaOdinga": "rgb(80, 184, 47)",
-          "MusaliaMudavadi": "rgb(153, 153, 255)",
+          "MusaliaMudavadi": "rgb(66, 227, 255)",
           "Wetangulam": "rgb((242, 13, 242)",
-          "HonMoses_Kuria": "rgb(13, 13, 242)"}
+          "HonMoses_Kuria": "rgb(66, 113, 255)"}
 
 
 translator = Translator()
