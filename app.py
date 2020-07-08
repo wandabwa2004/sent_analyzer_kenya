@@ -67,7 +67,7 @@ fig = px.box(df_sentiment, y="Sentiment Score", color="Author", title="Sentiment
 #st.write(fig)
 
 
-st.write("Emotion in the Politician Tweets")
+st.title("Emotions in the Politician Tweets")
 
 emotion = st.selectbox(' Choose the  emotion to analse',
                       ('anger', 'anticipation', 'disgust', 'fear', 'joy', 'negative', 'positive', 'sadness', 'surprise', 'trust'))
@@ -90,8 +90,8 @@ df_unpivot.sort_values(by="Score", inplace=True, ascending=False)
 fig = px.bar(df_unpivot, x="Emotions", y="Score", color="Author", color_discrete_map=colors)
 #st.write(fig)
 
-
-st.write("A comparison of Emotions against different politicians.")
+st.write("")
+st.title("A comparison of Emotions against different politicians.")
 politicians = st.multiselect(label='Choose any two or  more politicians for  a side by side comparison',
                       options=authors, default=['WilliamsRuto', 'RailaOdinga'])
 
@@ -111,19 +111,25 @@ st.write(fig)
 
 st.write("")
 st.write("Are you impressed by the sentiment and emotions of your favourite politician? Ultimately, they define them. Vote wisely.")
-
-st.write("Number of  tweets in the analysis for the  politician.")
+st.write("")
+st.write("")
+st.title("Number of  tweets in the analysis for the  politician.")
 st.write(df_sentiment["Author"].value_counts())
 
 
 
-
+st.write("")
+st.write("")
+st.write("")
 if st.button('Interested in my career profile?'):
     js = "window.open('https://www.linkedin.com/in/wandabwaherman/')"  # New tab or window
     html = '<img src onerror="{}">'.format(js)
     div = Div(text=html)
     st.bokeh_chart(div)
-
+    
+st.write("")
+st.write("")
+st.write("")
 if st.button('I sometimes blog..'):
     js = "window.open('https://medium.com/@hermanwandabwa')"  # New tab or window
     html = '<img src onerror="{}">'.format(js)
